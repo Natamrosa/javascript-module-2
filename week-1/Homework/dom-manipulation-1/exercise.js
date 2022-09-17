@@ -18,7 +18,7 @@ Write JavaScript below that logs:
 
 // 1.
 console.log(document.querySelectorAll("p"))
-let pArray = Array.from(document.querySelectorAll("p"));
+/*let pArray = Array.from(document.querySelectorAll("p"));
 pArray.forEach((i) => {
     console.log(i)
         //    todoList.appendChild(generateTodoDOM(todo))
@@ -43,7 +43,7 @@ console.log(document.querySelector(".primary-content").querySelectorAll("p"));
 Task 2
 ======
 
-When a user clicks the 'ALERT' button, an alert box should pop up with the text "Thanks for visiting Bikes for Refugees!"
+When a user clicks th e 'ALERT' button, an alert box should pop up with the text "Thanks for visiting Bikes for Refugees!"
 */
 
         
@@ -97,13 +97,16 @@ Task 5
 
 When the 'Larger links!' button is clicked, the text of all links on the page should increase.
 */
-// let largestLinkBtn = document.querySelector("#largestLinksBtn");
-// largestLinkBtn.addEventListener("click", largestLinks);
 
-// function largestLinks() {
-    // let fLink = document.querySelector(".article-title");
-    // fLink.toUpperCase
-    
+let largestLinkBtn = document.querySelector("#largestLinksBtn");
+ largestLinkBtn.addEventListener("click", largestLinks);
+
+ function largestLinks() {
+    const links=document.querySelectorAll("a");
+    console.log (links);
+    links.forEach(e=>e.style.fontSize = "x-large");
+
+ }
 
 
 
@@ -116,18 +119,22 @@ Using the same function in Task 4,
 When the 'Add' button is clicked, get the text inside the input field and create a new paragraph in the "LEARN MORE" section
 Also clear the text inside the input field
 */
-/*let addTxto = document.querySelector("#addArticleBtn");
+let addTxto = document.querySelector("#addArticleBtn");
 addTxto.addEventListener("click", addTexto);
 
-function addTexto(){
-    let paragraph = document.createElement("p");
-    paragraph.classList.add('Add some text here');
-    paragraph.textContent = 'There are no todos to show'
-    todoList.appendChild(paragraph);
-    let form = document.querySelector(".form-control");    
-    form.appendChild(paragraph);
-    paragraph.innerText = "NEW PARAGRAPH2"; 
+function addTexto() {
+    const input = document.querySelector("#addArticleInput")
+    const gtext = input.value
+
+    let newP = document.createElement("p")
+    newP.textContent = gtext
+    let learn = document.querySelector("#mainArticles")
+    learn.appendChild(newP)
+
+    input.value =""
 }
+
+
 /*
 Task 7
 ======
@@ -137,3 +144,15 @@ Using the same function in Task 3, every time the 'Change colour' button is clic
 The next color when you are in the last color of the array will be the first color again.
 */
 
+const colors= ["yellow", "red", "green", "blue"]
+const button2 = document.querySelector("#bgrChangeBtn");
+let i = 0
+button2.addEventListener("click", changeColor);
+function changeColor() {
+    document.body.style.backgroundColor = colors[i]
+     if (i < colors.length - 1) {
+        i++;
+    } else {
+        i = 0;
+    }
+}
