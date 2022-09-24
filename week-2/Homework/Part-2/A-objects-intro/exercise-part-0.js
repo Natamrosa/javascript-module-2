@@ -7,7 +7,11 @@ Try to think of as many properties as you can!
 */
 
 let laptop = {
-    brand: "Lenovo",
+    brand: "Huawei",
     screenSize: 13,
     isTouchscreen: true,
+    color: plate,
+    model: 1234,
+    graph: "nvidia"
+
   };

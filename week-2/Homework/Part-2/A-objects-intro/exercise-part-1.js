@@ -17,3 +17,34 @@ var car = {
 
 */
 
+const student = {
+    name: "Linda",
+    age: 26,
+    zodiac: "capricornio",
+    long hair: "M",
+};
+
+const móvil = {
+    brand: "Huawei",
+    color: "black",
+    model: "FMI"
+};
+
+const giraffe = {
+    size: "XXX",
+    color: "yellow, brown",
+    age: 52
+};
+
+const brasil = {
+    ubication: "SouthAmérica",
+    beachs: "wonderful",
+    poblation: "over"
+};
+
+const favouriteFood = {
+    type: "milanesa",
+    made: "meat",
+    origin: "Milan"
+
+};
