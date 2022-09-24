@@ -21,7 +21,7 @@ const student = {
     name: "Linda",
     age: 26,
     zodiac: "capricornio",
-    long hair: "M",
+    longHair: "M",
 };
 
 const móvil = {
