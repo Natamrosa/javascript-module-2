@@ -6,11 +6,13 @@ Follow the instructions below and then run the file and make sure it outputs the
 
 let house = {
   address: "1 Kinning Park",
-  previousOwners: ["Claire M.", "John A."],
+  previousOwners: ["Claire M.", "Stephen B."],
   currentOwner: {
-    firstName: "Margaret",
-    lastName: "Conway",
-  },
+    firstName: "Georgina",
+    lastName: "Hernandez",
+   
+}, 
+isForSale: false,
 };
 
 let newCurrentOwner = {
@@ -18,6 +20,8 @@ let newCurrentOwner = {
   lastName: "Hernandez",
 };
 
+house.currentOwner = newCurrentOwner;
+house.previousOwners[1] = "Stephen B.";
 /*
   DO NOT EDIT ANYTHING ABOVE THIS LINE
 
