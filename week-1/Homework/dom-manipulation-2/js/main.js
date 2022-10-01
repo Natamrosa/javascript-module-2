@@ -32,3 +32,47 @@ donateABike.style.backgroundColor = "black";
 volunteer.style.backgroundColor = "#8c9c08";
 
 }
+
+
+// PARTE 2
+
+const submitButton = document.querySelector("form button")
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+   
+
+    const emailInput = document.querySelector("#exampleInputEmail1")
+    const email = emailInput.value
+    const isEmailValid = email.length > 0 && email.includes("@")
+    if (isEmailValid === false) {
+        emailInput.style.background = "red"
+    } else {
+        emailInput.style.background = "white"
+    }
+
+    const nameInput = document.querySelector("#example-text-input")
+    const name = nameInput.value
+    const isNameValid = name.length > 0
+    if (isNameValid === false) {
+        nameInput.style.background = "red"
+    } else {
+        nameInput.style.background = "white"
+    }
+
+    const personalDescriptionInput = document.querySelector("#exampleTextarea")
+    const personalDescription = personalDescriptionInput.value
+    const isPersonalDescriptionValid = personalDescription.length > 0
+    if (isPersonalDescriptionValid === false) {
+        personalDescriptionInput.style.background = "red"
+    } else {
+        personalDescriptionInput.style.background = "white"
+    }
+
+    const isEverythingValid = isEmailValid && isNameValid && isPersonalDescriptionValid 
+    if (isEverythingValid) {
+        window.alert("thank you for filling out the form") 
+        emailInput.value=""
+        nameInput.value=""
+        personalDescriptionInput.value=""
+    }
+})
