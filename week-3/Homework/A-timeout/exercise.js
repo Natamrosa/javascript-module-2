@@ -9,3 +9,14 @@ Task 2
 Update your code to make the colour change every 5 seconds to something different. Hint: try searching for setInterval. (https://www.w3schools.com/jsref/met_win_setinterval.asp)
 ================
 */
+
+const fondoC = setInterval(colorf, 5000);
+
+function colorf() {
+    let colorB = document.querySelector ("body");
+    colorB.style.backgroundColor = colorB.style.backgroundColor == "pink" ? "red" : "pink" ;
+}
+
+function stopColor() {
+    clearInterval(fondoC);
+}
