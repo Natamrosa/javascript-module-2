@@ -38,6 +38,16 @@ function exerciseOne(arrayOfPeople) {
  */
 function exerciseTwo(shopping) {
   //Write your code in here
+
+ let content = document.querySelector("#content");
+  let myUl = document.createElement("ul");
+  shopping.forEach((element) => {
+    let myLi = document.createElement("li");
+    console.log("element", element);
+    myLi.textContent = element;
+    myUl.appendChild(myLi);
+  });
+  content.appendChild(myUl);
 }
 
 /**
@@ -71,7 +81,33 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+   let myBooks = document.querySelector("#content");
+  let myUl = document.createElement("ul");
+
+  books.forEach((element) => {
+    console.log("element", element);
+    let myP = document.createElement("p");
+    myP.textContent = element.title + " - " + element.author;
+    console.log(element.color);
+    console.log(element.title);
+    console.log("myP", myP);
+    myBooks.appendChild(myP);
+    let myLi = document.createElement("li");
+    let myImg = document.createElement("img");
+    myImg.src = element.url;
+    if (element.alreadyRead) {
+      myP.style.background = "green";
+    } else {
+      myP.style.background = "red";
+    }
+    myP.appendChild(myImg);
+    myLi.appendChild(myP);
+    console.log("myLi", myLi);
+    myUl.appendChild(myLi);
+  });
+  myBooks.appendChild(myUl);
 }
+
 
 //
 //
@@ -96,21 +132,24 @@ let shopping = ["Milk", "Break", "Eggs", "A Dinosaur", "Cake", "Sugar", "Tea"];
 exerciseTwo(shopping);
 
 const books = [
-  {
-    title: "The Design of Everyday Things",
+  {    title: "The Design of Everyday Things",
     author: "Don Norman",
-    alreadyRead: false
+    alreadyRead: false,
+    
   },
   {
     title: "The Most Human Human",
     author: "Brian Christian",
-    alreadyRead: true
+    alreadyRead: true,
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt",
-    alreadyRead: true
+    alreadyRead: true, 
   }
 ];
 
 exerciseThree(books);
+ 
+
+//PONER LAS IMAGENES CON HTML
