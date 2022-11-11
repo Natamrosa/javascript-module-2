@@ -1,1 +1,42 @@
 /** Write your CSS in here **/
+body {
+    background: linear-gradient(70deg,
+            #740001,
+            #ae0001,
+            #eeba30,
+            #d3a625,
+            #000000) no-repeat;
+    font-family: "Bebas Neue", cursive;
+}
+
+h2 {
+    color: aliceblue;
+    text-align: center;
+    margin-top: 70px;
+    font-size: 80px;
+}
+
+img {
+    border-radius: 20px;
+    width: 700px;
+}
+
+button {
+    font-size: 20px;
+    margin-left: 30px;
+    border-radius: 10px;
+    background-color: #7f0909;
+    border: solid 4 px #ffc500;
+    color: #ffc500;
+}
+
+#contenedor-form {
+    display: flex;
+    justify-content: center;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

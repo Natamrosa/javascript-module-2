@@ -59,9 +59,43 @@ var movies = [
 ];
 
 // create showMovies function
-
+function showMovies() {
+  for (let index = 0; index < movies.length; index++) {
+    const elementsP = movies[index];
+  }
+}
 
 // create a new movie object for your favorite movie
-
+const favMovie = {
+  title: "Back To The Future",
+  director: "Steven Spielberg",
+  type: "cs fi",
+  haveWatched: true
+}
 
 // create addMovies function
+function addMovie (movie){
+  setTimeout(() => {
+    movies.push(movie)
+    showMovies(movies)
+  },2000)
+}
+
+// create addMovies function
+
+const pagFb = document.querySelector('#boton')
+pagFb.addEventListener('click',e =>{
+  e.preventDefault()
+
+
+const pagFb = document.querySelector('#nombreE')
+const directorE = document.querySelector('#directorE')
+const tipoE = document.querySelector('#tipoE')
+const vistaE = document.querySelector('#vistaE')
+const pelisAdd ={
+  title : nombreE.value,
+  director : directorE.value,
+  type : tipoE.value,
+  haveWatched : vistaE.value}
+  addMovie(pelisAdd)
+})
