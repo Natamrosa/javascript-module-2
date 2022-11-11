@@ -59,13 +59,34 @@ let restaurant1 = {
     applicationVersion: "1.0",
     restaurants: restaurants,
     findAvailableRestaurants: function (numberOfPeople) {
-      // Complete here
+      let restaurantsAvaialable = [];
+      this.restaurants.forEach((restaurant) => {
+        if (
+          restaurants.totalSeats - restaurant.numberOfCustomers >=
+          numberOfPeople
+        ) {
+          restaurantsAvaialable.push(restaurant.name);
+        }
+      });
+      return restaurantsAvaialable;
     },
     findRestaurantServingDish: function (dishName) {
-      // Complete here
+      const isInmenu = (restaurant) => {
+        return restaurant.menu.includes(dishName);
+      };
+      const restaurantSelected = this.restaurants.filter(isInmenu);
+      let result = [];
+      console.log("selected", restaurantSelected);
+      restaurantSelected.forEach(element => {
+        result.push(element.name);
+      })
+      return result;
     },
     countNumberOfRestaurantsInArea: function (area) {
-      // Complete here
+    const isInArea = restaurant => {
+      return restaurant.address.area === area;
+    }
+    return this.restaurants.filter(isInArea).length;
     },
   };
   
