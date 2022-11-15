@@ -1,70 +1,101 @@
 // Write your code here
-const linkImg = document.getElementById("hpMovies");
 
-let index = 0;
+let images = [
+    "https://images.unsplash.com/photo-1649264889763-5cba7bca8335?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "https://images.unsplash.com/photo-1639921006156-66822d71c42a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    "https://images.unsplash.com/photo-1649389216842-1dcfafe130a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "https://images.unsplash.com/photo-1649266627098-cc1bb09778b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    "https://images.unsplash.com/photo-1649482565637-68ce26ce5ac9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
+]
 
-let bucleAdelante;
+function showImage(id) {
+    let myImageE = document.querySelector(".myimage");
+    myImageE.src = images[id];
+}
 
-let bucleAtras;
+let showImageCount = 1;
 
-const hpMovies = [
-      "https://w0.peakpx.com/wallpaper/69/675/HD-wallpaper-harry-potter-harry-potter-and-the-chamber-of-secrets.jpg",
-  "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/fe3de0ab2c5dcd6af5e1f87c6477ecf95c777c6c3089bc185a97a612c77a7bc4._V_SX1080_.jpg",
-  "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/36d52aec891350d8b9668825ac4fa0b04c35283653f4c73b63284a0dac33c78f._RI_V_TTW_.jpg",
-  "https://hbomax-images.warnermediacdn.com/images/GXssPaAiBJ1VGwwEAAABW/tileburnedin?size=320x180&partner=hbomaxcom&language=es-es&v=191d87d2864ee490edab429247adf289&host=art-gallery-latam.api.hbo.com&w=160",
-  "https://hbomax-images.warnermediacdn.com/images/GXssQ0A7HLFVGwwEAAABc/tileburnedin?size=320x180&partner=hbomaxcom&language=es-es&v=94d4e8bcc216945b378b2cebcce9da70&host=art-gallery-latam.api.hbo.com&w=160",
-  "https://hbomax-images.warnermediacdn.com/images/GXssRwQHfmVVGwwEAAABi/tileburnedin?size=320x180&partner=hbomaxcom&v=2595b80bf4916a2dba7d073ac096ad41&language=es-es&host=art-gallery.api.hbo.com&w=160",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkpyPh9Bw636kV_JzouKXe4gqxpIJqRQBiaA&usqp=CAU",
-];
+showImage(showImageCount);
 
-const botonAtras = document.getElementById("botonAtras");
-botonAtras.addEventListener("click", () => atras());
-
-function atras() {
-    if (index < 1) {
-        index = hpMovies.length;
+function showImageFoward(){
+    if (showImageCount + 1 < images.length) {
+        showImageCount ++;
+    } else {
+        showImageCount = 0;
     }
-    index--;
-    linkImg.src = hpMovies[index];
+    showImage(showImageCount);
 }
 
-const botonAdelante = document.getElementById("botonAdelante");
-botonAdelante.addEventListener("click", () => botonAdelante());
+function showImageBackward(){
 
-function adelante() {
-    if (index == hpMovies.length - 1) {
-        index = 1;
+    if (showImageCount - 1 > 0) {
+        showImageCount--;
+    } else {
+        showImageCount = images.length -1;
     }
-    index++;
-    linkImg.src = hpMovies[index];
-    console.log(index, hpMovies[index]);
+    showImage(showImageCount);
 }
 
-const botonAutoLeft = document.getElementById("botonAutoLeft");
-botonAutoLeft.addEventListener("click", () => seguirIzquierda());
+document.querySelector("#back").addEventListener("click",event => {
+    event.preventDefault();
+    showImageFoward()
+})
 
-function seguirIzquierda() {
-    clearInterval(bubleAdelante);
-    bucleAtras = setInterval("atras()", 1000);
+
+function autoFoward() {
+    const interval = window.setInterval(showImageFoward, 1000)
+    return interval
 }
 
-const botonParar = document.getElementById("botonParar");
-botonParar.addEventListener("click", () => pararCarrusel());
-
-function pararCarrusel() {
-    if (bucleAdelante != undefined) {
-        clearInterval(bucleAdelante);
-    }
-    if (bucleAtras != undefined) {
-        clearInterval(bucleAtras);
-    }
-}
-const botonAutoRight = document.getElementById("botonAutoRight");
-botonAutoRight.addEventListener("click", () => seguirDerecha());
-
-function seguirDerecha() {
-    clearInterval(bucleAtras);
-    bucleAdelante = setInterval("adelante()", 1000);
+function autoBackward() {
+    const interval = window.setInterval(showImageBackward, 1000)
+    return interval
 }
 
-linksImg.src = hpMovies[index];
+let autoFowardInterval;
+let autoBackwardInterval;
+
+function stopIntervals() {
+    clearInterval(autoFowardInterval)
+    clearInterval(autoBackwardInterval)
+}
+
+document.querySelector("#autoFoward").addEventListener("click",event => {
+    event.preventDefault()
+    autoFowardInterval = autoFoward()
+})
+
+document.querySelector("#autoFoward").addEventListener("click", event => {
+    event.preventDefault()
+    autoFowardInterval = autoFoward()
+})
+
+document.querySelector("#autoBackward").addEventListener("click",event => {
+    event.preventDefault()
+    autoFowardInterval = autoBackward()
+})
+
+document.querySelector("#stop").addEventListener("click", event => {
+    event.preventDefault()
+    stopIntervals()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
